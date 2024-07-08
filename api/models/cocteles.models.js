@@ -6,7 +6,7 @@ const coctelesSchema = new Schema (
     {
         nombre: {type: String, required: true },
         precio: {type: Number, required: true },
-        precioNoche: {type: Number, required: false },
+        precioNoche: {type: Number, required: true },
         image: {type: String, required: false },
     }
 )

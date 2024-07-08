@@ -1,5 +1,4 @@
 const Cervezas = require("../models/cervezas.models");
-// const server = "http://localhost:9000";
 
 const getCervezas = async (req, res) => {
   try {

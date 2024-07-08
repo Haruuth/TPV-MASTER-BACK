@@ -8,9 +8,12 @@ const PORT = process.env.PORT;
 const server = express();
 connect();
 
+const routerCuentas = require("./api/routers/cuentas.routes");
 const routerCervezas = require("./api/routers/cervezas.routes");
-const routerCocteles = require("./api/routers/cocteles.routes");
-const routerGinebras = require("./api/routers/ginebras.routes");
+
+//TODO: Unificar los controladores, modelos y los routers en solo 2 Productos y cuenta
+// const routerCocteles = require("./api/routers/cocteles.routes");
+// const routerGinebras = require("./api/routers/ginebras.routes");
 
 server.use(cors({
     origin: ["http://localhost:3000", "http://localhost:4200", "http://nombre.vercel.com", "http://127.0.0.1:5500"],
@@ -21,9 +24,11 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
 // Rutas
+server.use("/cuentas", routerCuentas);
 server.use("/cervezas", routerCervezas);
-server.use("/cocteles", routerCocteles);
-server.use("/ginebras", routerGinebras);
+
+// server.use("/cocteles", routerCocteles);
+// server.use("/ginebras", routerGinebras);
 server.get("/", (req, res) => {
     res.status(200).json({ message: "Bienvenido a la API de UNICO" });
 });
